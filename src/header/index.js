@@ -1,0 +1,69 @@
+import React, { Component } from 'react';
+import {
+  Link,
+  Switch,
+  Route
+} from "react-router-dom";
+import { Menu } from 'antd';
+import observer from 'utils/observer';
+import menuData from '../menuData';
+import SideBar from '../sidebar';
+
+const MenuItem = Menu.Item;
+let headerMenuData = [];
+export default class Header extends Component {
+  constructor(props) {
+    super();
+    const selectedMenuItem = [];
+    menuData.forEach(item => {
+      if (item.parentKey === 0) {
+        headerMenuData.push(item);
+        if (window.location && window.location.pathname && window.location.pathname.includes(item.path)) {
+          selectedMenuItem.push(item.key)
+        }
+      }
+    });
+    this.state = {
+      selectedMenuItem,
+    };
+  }
+
+  handleMenuItemChange = (v) => {
+    observer.pub('topMenuChange', v);
+    this.setState({selectedMenuItem: [v.key]})
+  }
+
+  render() {
+    const { selectedMenuItem } = this.state;
+    const headMenuName = [];
+    const headMenuRoute = [];
+    if (headerMenuData && headerMenuData.length) {
+      headerMenuData.forEach(item => {
+        headMenuName.push(
+          <MenuItem key={item.key}>
+            <Link to={item.path}>{item.name}</Link>
+          </MenuItem>
+        );
+        headMenuRoute.push(
+          <Route key={item.path} path={item.path} component={SideBar} />
+        )
+      })
+    }
+    
+    return (
+      <>
+        <Menu
+          mode="horizontal"
+          onClick={this.handleMenuItemChange}
+          selectedKeys={selectedMenuItem}
+        >
+          {headMenuName}
+        </Menu>
+
+        <Switch>
+          {headMenuRoute}
+        </Switch>
+      </>
+    );
+  }
+}
