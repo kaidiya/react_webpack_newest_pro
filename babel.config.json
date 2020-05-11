@@ -4,6 +4,9 @@
       {
         "useBuiltIns": "usage",
         "shippedProposals": true,
+        "targets": {
+          "chrome": "67"
+        },
         "corejs": {
           "version": 2
         }

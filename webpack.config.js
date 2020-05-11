@@ -2,6 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackplugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const CopyRightWebpackPlugin = require('./plugin/copyright-webpack-plugin');
 
@@ -25,6 +28,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new CopyRightWebpackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -38,11 +42,14 @@ module.exports = {
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+        },
       }
     }, {
       test: /(\.css)$/,
       use: [
-        'style-loader',
+        MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
         },
@@ -51,7 +58,7 @@ module.exports = {
     }, {
       test: /(.less)$/,
       use: [
-        'style-loader',
+        MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
         },
@@ -79,6 +86,7 @@ module.exports = {
     }]
   },
   optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin({}), new TerserPlugin()],
     splitChunks: {
       chunks: 'all',
     }

@@ -1,0 +1,17 @@
+.side-bar-menu-wrap .side-bar-menu {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  width: 160px;
+}
+.side-bar-menu-wrap .page-content {
+  position: absolute;
+  left: 160px;
+  top: 50px;
+  right: 4px;
+  width: 100%;
+}
+
+
+/*# sourceMappingURL=main.css.map*/
