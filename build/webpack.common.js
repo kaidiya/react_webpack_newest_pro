@@ -1,8 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const htmlWebpackplugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -69,6 +71,12 @@ module.exports = {
       template: path.resolve(__dirname, '../index.html')
     }),
     new MiniCssExtractPlugin(),
+    new AddAssetHtmlWebpackPlugin({
+      filepath: path.resolve(__dirname, '../dll/vendors.dll.js'),
+    }),
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, '../dll/vendors.manifest.json'),
+    }),
   ],
   optimization: {
     minimizer: [new OptimizeCSSAssetsPlugin({})],
