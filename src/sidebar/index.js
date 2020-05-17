@@ -22,7 +22,6 @@ export default class SideBar extends Component {
         selectedSideMenuItem.push(item.key);
       }
     });
-    console.log(currentSideMenu);
     this.state = {
       currentSideMenu,
       selectedSideMenuItem,
@@ -64,7 +63,6 @@ export default class SideBar extends Component {
         )
       });
     }
-    console.log(this.state.a, selectedSideMenuItem);
     return (
       <>
         <div className="side-bar-menu-wrap">
