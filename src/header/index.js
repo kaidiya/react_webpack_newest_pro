@@ -15,14 +15,21 @@ export default class Header extends Component {
   constructor(props) {
     super();
     const selectedMenuItem = [];
+    const { pathname } = window.location || {};
+    const currentSelectedSideBarMenuData = menuData.find(i => i.path === pathname) || {};
     menuData.forEach(item => {
       if (item.parentKey === 0) {
+        const headerMenuPath = menuData.find(i => i.parentKey === item.key) || {};
+        item.path = headerMenuPath.path || item.path;
         headerMenuData.push(item);
-        if (window.location && window.location.pathname && window.location.pathname.includes(item.path)) {
-          selectedMenuItem.push(item.key)
+        if (currentSelectedSideBarMenuData.parentKey && currentSelectedSideBarMenuData.parentKey === item.key) {
+          selectedMenuItem.push(item.key);
         }
       }
     });
+    if (currentSelectedSideBarMenuData.parentKey === 0 && !selectedMenuItem.length) {
+      selectedMenuItem.push(currentSelectedSideBarMenuData.key);
+    }
     this.state = {
       selectedMenuItem,
     };
@@ -37,6 +44,8 @@ export default class Header extends Component {
     const { selectedMenuItem } = this.state;
     const headMenuName = [];
     const headMenuRoute = [];
+    console.log(headerMenuData)
+    
     if (headerMenuData && headerMenuData.length) {
       headerMenuData.forEach(item => {
         headMenuName.push(
@@ -45,7 +54,7 @@ export default class Header extends Component {
           </MenuItem>
         );
         headMenuRoute.push(
-          <Route key={item.path} path={item.path} component={SideBar} />
+          <Route key={item.path} path={item.path} component={item.component || SideBar} />
         )
       })
     }

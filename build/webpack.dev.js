@@ -16,6 +16,7 @@ const devConfig = {
     hot: true,
     open: true,
     historyApiFallback: true,
+    port: 9910,
   },
 }
 

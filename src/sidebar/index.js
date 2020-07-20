@@ -16,12 +16,16 @@ export default class SideBar extends Component {
     observer.sub('topMenuChange', this.handleTopMenuChange);
     const currentSideMenu = [];
     const selectedSideMenuItem = [];
+    const { pathname } = window.location || {};
+    const currentSelectedMenuData = menuData.find(i => i.path === pathname && i.parentKey) || {};
     menuData.forEach(item => {
-      if (window.location && item.path.includes(window.location.pathname) && item.parentKey !== 0) {
+      if (currentSelectedMenuData && currentSelectedMenuData.parentKey && item.parentKey === currentSelectedMenuData.parentKey) {
         currentSideMenu.push(item);
-        selectedSideMenuItem.push(item.key);
       }
     });
+    if (currentSelectedMenuData.key) {
+      selectedSideMenuItem.push(currentSelectedMenuData.key);
+    }
     this.state = {
       currentSideMenu,
       selectedSideMenuItem,
@@ -47,6 +51,10 @@ export default class SideBar extends Component {
     this.setState({currentSideMenu, selectedSideMenuItem});
   }
 
+  handleSideBarMenuChange = ({key}) => {
+    this.setState({selectedSideMenuItem: [key]})
+  };
+
   render() {
     const { currentSideMenu, selectedSideMenuItem } = this.state;
     const sideMenuItem = [];
@@ -69,6 +77,7 @@ export default class SideBar extends Component {
           <div className="side-bar-menu">
             <Menu
               selectedKeys={selectedSideMenuItem}
+              onClick={this.handleSideBarMenuChange}
             >
               {sideMenuItem}
             </Menu>

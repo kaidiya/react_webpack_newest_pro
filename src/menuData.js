@@ -1,9 +1,10 @@
 import StringAlgorithm from 'algorithm/string';
+import ObjectAlgorithm from 'algorithm/object';
 import Intro from './intro';
 
 const menuData = [
   {
-    path: '/intro',
+    path: '/home',
     component: Intro,
     key: '0',
     name: '简介',
@@ -11,28 +12,27 @@ const menuData = [
     order: 1,
   },
   {
-    path: '/js',
     key: '1',
     name: 'js',
     parentKey: 0,
     order: 2,
   }, 
   {
-    path: '/js/string',
+    path: '/js/string', 
     component: StringAlgorithm,
     key: '1-1',
     name: 'string',
     parentKey: '1',
     order: 1,
   }, 
-  // {
-  //   path: '/js/object',
-  //   component: '',
-  //   key: '1-2',
-  //   name: 'object',
-  //   parentKey: '1',
-  //   order: 2
-  // }, 
+  {
+    path: '/js/object',
+    component: ObjectAlgorithm,
+    key: '1-2',
+    name: 'object',
+    parentKey: '1',
+    order: 2
+  }, 
   // {
   //   path: '/css',
   //   component: '',
