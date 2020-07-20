@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config ./build/webpack.dev.js",
+    "dev": "cross-env MODE=DEVELOP webpack-dev-server --config ./build/webpack.dev.js",
     "build": "webpack --config ./build/webpack.prod.js",
     "debug": "node --inspect --inspect-brk node_modules/webpack/bin/webpack.js",
     "build:dll": "webpack --config ./build/webpack.dll.js"
@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "antd": "^4.4.2",
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "cross-env": "^7.0.2"
   }
 }

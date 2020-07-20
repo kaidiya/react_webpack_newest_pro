@@ -78,6 +78,7 @@ export default class SideBar extends Component {
             <Menu
               selectedKeys={selectedSideMenuItem}
               onClick={this.handleSideBarMenuChange}
+              mode="inline"
             >
               {sideMenuItem}
             </Menu>

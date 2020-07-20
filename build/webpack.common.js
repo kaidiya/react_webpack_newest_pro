@@ -23,7 +23,7 @@ module.exports = {
     }, {
       test: /(\.css)$/,
       use: [
-        MiniCssExtractPlugin.loader,
+        process.env.MODE === 'DEVELOP' ? 'style-loader' : MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
         },
@@ -32,7 +32,7 @@ module.exports = {
     }, {
       test: /(.less)$/,
       use: [
-        MiniCssExtractPlugin.loader,
+        process.env.MODE === 'DEVELOP' ? 'style-loader' : MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
         },
@@ -70,7 +70,6 @@ module.exports = {
     new htmlWebpackplugin({
       template: path.resolve(__dirname, '../index.html')
     }),
-    new MiniCssExtractPlugin(),
     new AddAssetHtmlWebpackPlugin({
       filepath: path.resolve(__dirname, '../dll/vendors.dll.js'),
     }),
@@ -78,12 +77,6 @@ module.exports = {
       manifest: path.resolve(__dirname, '../dll/vendors.manifest.json'),
     }),
   ],
-  optimization: {
-    minimizer: [new OptimizeCSSAssetsPlugin({})],
-    splitChunks: {
-      chunks: 'all',
-    }
-  },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name]_[hash:8].js',

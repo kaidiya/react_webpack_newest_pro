@@ -17,6 +17,10 @@ const devConfig = {
     open: true,
     historyApiFallback: true,
     port: 9910,
+    // watchContentBase: true,
+    // watchOptions: {
+    //   poll: true
+    // }
   },
 }
 

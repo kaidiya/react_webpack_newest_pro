@@ -44,7 +44,6 @@ export default class Header extends Component {
     const { selectedMenuItem } = this.state;
     const headMenuName = [];
     const headMenuRoute = [];
-    console.log(headerMenuData)
     
     if (headerMenuData && headerMenuData.length) {
       headerMenuData.forEach(item => {
