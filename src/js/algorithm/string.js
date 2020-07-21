@@ -58,7 +58,7 @@ class FirstPage extends Component {
       <>
         <div>
           {/** 面试遇到的一些算法实现 */}
-          {/* <div>字符串的简写，eg: aaaabbcccc => a4b2c3</div> */}
+          {/* <div>{'字符串的简写，eg: aaaabbcccc => a4b2c3'}</div> */}
           <input onChange={this.handleStringChange} />
           {this.state.showFinalStr}
         </div>
