@@ -44,8 +44,10 @@
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "antd": "^4.4.2",
     "core-js": "^3.6.5",
-    "cross-env": "^7.0.2"
+    "cross-env": "^7.0.2",
+    "react-redux": "^7.2.0"
   }
 }
