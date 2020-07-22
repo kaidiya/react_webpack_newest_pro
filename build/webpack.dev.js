@@ -21,6 +21,14 @@ const devConfig = {
     // watchOptions: {
     //   poll: true
     // }
+    proxy: {
+      '/saasweb': {
+        // target: 'http://10.188.40.142:8082',
+        // target: 'http://10.188.40.141:8097', // test
+        target: 'http://10.188.40.205:8082', // test
+        changeOrigin: true,
+      },
+    },
   },
 }
 

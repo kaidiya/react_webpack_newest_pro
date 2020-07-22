@@ -4,6 +4,7 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 import test from './test';
 import { store } from '../../index';
 import { addTodo, toggleTodo } from '../../reducer/todos';
+import request from '../../utils/http';
 
 class FirstPage extends Component {
   constructor(props) {
@@ -11,8 +12,17 @@ class FirstPage extends Component {
     this.state = {
       showFinalStr: '',
     };
-    var arr1 = [1, 2, [3, [4, 5]]]; // 平铺为 // [1, 2, 3, 4, 5]
-    console.log(test(1)(2));
+  }
+
+  componentDidMount() {
+    request('/saasweb/fs/shopping/merchant/tuancanshoplist', {
+      page: 1,
+      pageSize: 20,
+      lng: 116.352969,
+      lat: 40.014472,
+    }).then(res => {
+      console.log(res);
+    })
   }
 
   shortenString = (str) => {
