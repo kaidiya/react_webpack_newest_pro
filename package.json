@@ -49,5 +49,13 @@
     "core-js": "2.6.5",
     "cross-env": "^7.0.2",
     "react-redux": "^7.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
+    }
   }
 }
