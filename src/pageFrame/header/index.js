@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { Menu } from 'antd';
 import observer from 'utils/observer';
-import menuData from '../menuData';
+import menuData from '../../menuData';
 import SideBar from '../sidebar';
 
 const MenuItem = Menu.Item;
@@ -53,7 +53,7 @@ export default class Header extends Component {
           </MenuItem>
         );
         headMenuRoute.push(
-          <Route key={item.path} path={item.path} component={item.component || SideBar} />
+          <Route key={item.path} path={item.path} component={item.component} />
         )
       })
     }

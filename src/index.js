@@ -3,8 +3,8 @@ import { BrowserRouter as Router, } from "react-router-dom";
 import { createBrowserHistory } from 'history';
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux';
-import Header from './header';
-import SideBar from './sidebar';
+import Header from './pageFrame/header';
+import SideBar from './pageFrame/sidebar';
 import allReducers from './reducer';
 
 const history = createBrowserHistory();

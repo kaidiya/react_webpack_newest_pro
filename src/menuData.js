@@ -1,6 +1,6 @@
 import StringAlgorithm from 'algorithm/string';
 import ObjectAlgorithm from 'algorithm/object';
-import Intro from './intro';
+import Intro from './pages/intro';
 
 const menuData = [
   {
@@ -33,14 +33,14 @@ const menuData = [
     parentKey: '1',
     order: 2
   }, 
-  // {
-  //   path: '/css',
-  //   component: '',
-  //   key: '2',
-  //   name: 'css',
-  //   parentKey: 0,
-  //   order: 3
-  // }
+  {
+    path: '/css',
+    component: '',
+    key: '2',
+    name: 'css',
+    parentKey: 0,
+    order: 3
+  }
 ];
 
 export default menuData;

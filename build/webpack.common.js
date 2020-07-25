@@ -62,7 +62,7 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
     alias: {
-      algorithm: path.resolve(__dirname, '../', './src/js/algorithm'),
+      algorithm: path.resolve(__dirname, '../', './src/pages/js/algorithm'),
       utils: path.resolve(__dirname, '../', './src/utils'),
     },
   },

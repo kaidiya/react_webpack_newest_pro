@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import test from './test';
-import { store } from '../../index';
-import { addTodo, toggleTodo } from '../../reducer/todos';
-import request from '../../utils/http';
+import { store } from '../../../index';
+import { addTodo, toggleTodo } from '../../../reducer/todos';
+import request from '../../../utils/http';
+import TestEffect from './testEffect';
 
 class FirstPage extends Component {
   constructor(props) {
     super();
+    console.log(11111111111)
     this.state = {
       showFinalStr: '',
     };
@@ -81,6 +83,7 @@ class FirstPage extends Component {
             ))}
           </ul>
         </div>
+        <TestEffect />
       </>
     );
   }
