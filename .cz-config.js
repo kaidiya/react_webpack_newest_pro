@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       value: 'refactor',
-      name: '重构代码',
+      name: '重构代码', 
     },
     {
       value: 'style',
