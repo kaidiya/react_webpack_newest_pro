@@ -1,6 +1,7 @@
 import StringAlgorithm from 'algorithm/string';
 import ObjectAlgorithm from 'algorithm/object';
 import Intro from './pages/intro';
+import CanvasExample from './pages/html/canvas';
 
 const menuData = [
   {
@@ -40,6 +41,22 @@ const menuData = [
     name: 'css',
     parentKey: 0,
     order: 3
+  },
+  {
+    path: '/html',
+    component: '',
+    key: '3',
+    name: 'html',
+    parentKey: 0,
+    order: 3
+  },
+  {
+    path: '/html/canvas', 
+    component: CanvasExample,
+    key: '3-1',
+    name: 'canvas',
+    parentKey: '3',
+    order: 1,
   }
 ];
 
