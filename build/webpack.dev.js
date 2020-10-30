@@ -22,10 +22,11 @@ const devConfig = {
     //   poll: true
     // }
     proxy: {
-      '/saasweb': {
+      '/home': {
         // target: 'http://10.188.40.142:8082',
         // target: 'http://10.188.40.141:8097', // test
-        target: 'http://10.188.40.205:8082', // test
+        // target: 'http://10.188.40.205:8082', // test
+        target: 'http://localhost:9999', // node test
         changeOrigin: true,
       },
     },

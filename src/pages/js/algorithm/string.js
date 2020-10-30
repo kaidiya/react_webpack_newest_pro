@@ -10,19 +10,13 @@ import TestEffect from './testEffect';
 class FirstPage extends Component {
   constructor(props) {
     super();
-    console.log(11111111111)
     this.state = {
       showFinalStr: '',
     };
   }
 
   componentDidMount() {
-    request('/saasweb/fs/shopping/merchant/tuancanshoplist', {
-      page: 1,
-      pageSize: 20,
-      lng: 116.352969,
-      lat: 40.014472,
-    }).then(res => {
+    request.get('/nodetest/getlist').then(res => {
       console.log(res);
     })
   }

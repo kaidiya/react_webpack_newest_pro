@@ -39,7 +39,6 @@ export default class SideBar extends Component {
   }
 
   componentWillUnmount() {
-    console.log('左侧导航卸载了')
     observer.unbind('topMenuChange', this.handleTopMenuChange);
   }
 

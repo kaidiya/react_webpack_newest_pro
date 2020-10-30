@@ -13,6 +13,8 @@ const getObjectParams = (params) => {
   return finalResult.join('&');
 };
 
+const common_url = 'http:localhost:9090'
+
 const getHttp = (type = 'POST') => (url, params) => {
   let secondParams = {
     Accept: 'application/json',
@@ -20,16 +22,21 @@ const getHttp = (type = 'POST') => (url, params) => {
     method: type,
     headers: {
       fsUss: '411fcd76673d1e8a3eb857f49e3430eaa1b90d361701990c70b8db507d6798d8',
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      'Content-Type': 'application/json;charset=UTF-8'
     },
   };
   if (type !== 'GET') {
-    secondParams.body = params;
+    secondParams.body = JSON.stringify(params);
   }
   if (type === 'GET') {
-    url = `${url}${params ? '?' : ''}${getObjectParams(params)}`;
+    url = `${url}${params ? '?' : ''}${getObjectParams(params) || ''}`;
   }
-  return fetch(url, secondParams);
+  return fetch(url, secondParams).then(res => {
+    return res.json();
+  });
 };
 
-export default getHttp('GET');
+export default {
+  get: getHttp('GET'),
+  post: getHttp('POST'),
+};
