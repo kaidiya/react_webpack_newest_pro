@@ -7,6 +7,7 @@ import {
 import { Menu } from 'antd';
 import observer from 'utils/observer';
 import menuData from '../../menuData';
+import PageNotFound from '../pageNotFound';
 import './style.less';
 
 const MenuItem = Menu.Item;
@@ -67,9 +68,12 @@ export default class SideBar extends Component {
           </MenuItem>
         );
         sideRoute.push(
-          <Route key={item.path} path={item.path} component={item.component} />
+          <Route key={item.path} path={item.path} component={item.component || PageNotFound} />
         )
       });
+    }
+    if (!sideMenuItem.length) {
+      return <PageNotFound />;
     }
     return (
       <>

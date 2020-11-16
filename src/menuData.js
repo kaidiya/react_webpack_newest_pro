@@ -3,6 +3,7 @@ import ObjectAlgorithm from 'algorithm/object';
 import Intro from './pages/intro';
 import CanvasExample from './pages/html/canvas';
 import NodeTest from './pages/js/node_test';
+import CssAnimation from './pages/css/animation';
 
 const menuData = [
   {
@@ -45,11 +46,18 @@ const menuData = [
   },
   {
     path: '/css',
-    component: '',
     key: '2',
     name: 'css',
     parentKey: 0,
     order: 3
+  },
+  {
+    path: '/animation',
+    component: CssAnimation,
+    key: '2-1',
+    name: 'animation',
+    parentKey: '2',
+    order: 1
   },
   {
     path: '/html',
@@ -66,6 +74,14 @@ const menuData = [
     name: 'canvas',
     parentKey: '3',
     order: 1,
+  },
+  {
+    path: '/kotlin',
+    component: '',
+    key: '4',
+    name: 'kotlin',
+    parentKey: 0,
+    order: 3
   },
 ];
 

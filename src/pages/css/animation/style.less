@@ -1,0 +1,32 @@
+.page_loading_animation {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  left: 30px;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.page_loading_animation{
+  &::after {
+    content: '';
+    margin-top: 0px;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 -10px 0 #ccc, 10px 0 0 #ccc, 0 10px 0 #ccc, -10px 0 0 #ccc, -7px -7px 0 #ccc,
+      7px -7px 0 #ccc, 7px 7px 0 #ccc, -7px 7px 0 #ccc;
+    animation: loading-circle 1.5s linear infinite;
+    @keyframes loading-circle {
+      from {
+        transform: scale(1.5) rotateZ(0deg);
+      }
+      to {
+        transform: scale(1.5) rotateZ(360deg);
+      }
+    }
+  }
+}
