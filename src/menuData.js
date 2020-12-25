@@ -7,7 +7,7 @@ import CssAnimation from './pages/css/animation';
 
 const menuData = [
   {
-    path: '/home',
+    path: '/intro',
     component: Intro,
     key: '0',
     name: '简介',

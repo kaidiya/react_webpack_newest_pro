@@ -42,6 +42,7 @@ export default class Header extends Component {
 
   render() {
     const { selectedMenuItem } = this.state;
+    console.log(1111111111, selectedMenuItem);
     const headMenuName = [];
     const headMenuRoute = [];
     
